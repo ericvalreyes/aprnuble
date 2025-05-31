@@ -6,5 +6,3 @@ python-multipart
 email-validator
 passlib[bcrypt]
 python-dotenv
-matplotlib
-python-jose
