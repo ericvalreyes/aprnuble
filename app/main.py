@@ -1,7 +1,11 @@
-# main.py - ejemplo básico
-from fastapi import FastAPI
-app = FastAPI()
 
-@app.get('/')
-def read_root():
-    return {'message': 'Hola desde Render!'}
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
+app = FastAPI()
+templates = Jinja2Templates(directory="app/templates")
+
+@app.get("/", response_class=HTMLResponse)
+def dashboard_root(request: Request):
+    return templates.TemplateResponse("dashboard.html", {"request": request})
