@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from app.routers import web  # Importamos el router del panel de control
 
 app = FastAPI()
-templates = Jinja2Templates(directory="app/templates")
 
-@app.get("/", response_class=HTMLResponse)
-def dashboard_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+# Montamos los archivos estáticos (si tienes CSS/JS en app/static)
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+# Incluir rutas del panel de control
+app.include_router(web.router)
