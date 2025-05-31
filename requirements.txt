@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+jinja2
+sqlalchemy
+passlib[bcrypt]
+python-multipart
+python-jose
+email-validator
+python-dotenv
+openpyxl
+aiofiles
+jinja2
+requests
+matplotlib
